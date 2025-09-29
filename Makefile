@@ -1,5 +1,5 @@
 build:
-	go build -o main main.go
+	go build -o bin/main pkg/main.go
 
 run: build
-	time ./main rtb-sc.media.net sc && rm -rf main
+	time bin/main rtb-sc.media.net && rm -rf bin/main
