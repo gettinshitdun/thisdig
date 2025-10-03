@@ -22,7 +22,7 @@ type IPs []string
 
 func (q *DNSQuerier) Query() IPs {
 	out, err := exec.Command("dig", q.domain, "+short").Output()
-	utils.HandleError(err, fmt.Sprintf("while executing dig for %s", q.domain))
+	utils.HandleError(err, fmt.Sprintf("while executing dig for %s", q.domain), false)
 	var ips IPs = strings.Split(string(out), "\n")
-	return ips
+	return ips[:len(ips) - 1]
 }
